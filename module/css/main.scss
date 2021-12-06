@@ -1,8 +1,6 @@
 html,
 body {
   margin: 0;
-  --app-origin-width: 1920;
-  --app-origin-height: 1080;
 }
 
 *,
@@ -12,7 +10,6 @@ body {
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
-  user-select: none;
 }
 
 .eventNone {
