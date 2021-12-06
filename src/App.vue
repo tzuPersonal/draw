@@ -1,5 +1,5 @@
 <template>
-  <div class="canvas-container flex justify-center align-center">
+  <div class="canvas-container flex row justify-center align-center">
     <Canvas />
   </div>
 </template>
@@ -9,7 +9,7 @@ import Canvas from './components/Canvas.vue';
 </script>
 
 <style lang="scss">
-@import url('./BaseCss/main.scss');
+@import '../module/css/main.scss';
 
 .canvas-container {
   width: 800px;

@@ -1,5 +1,5 @@
 <template>
-  <canvas ref="canvas"></canvas>
+  <canvas ref="canvas" width="560" height="360"></canvas>
 </template>
 
 <script setup>
@@ -18,8 +18,6 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 canvas {
-  width: 400px;
-  height: 300px;
   border: 1px solid black;
   background-color: white;
 }
