@@ -11,5 +11,5 @@ import Tools from './components/Tools/Tools.vue';
 </script>
 
 <style lang="scss">
-@import '../module/css/main.scss';
+@import '../module/scss/main.scss';
 </style>
