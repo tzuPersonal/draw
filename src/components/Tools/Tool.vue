@@ -1,7 +1,8 @@
 <template>
   <Button
     class="tool"
-    :buttonImage="require(`../../assets/${toolImage}.png`)"
+    :style="{ 'background-image': `url(${require(`../../assets/${toolImage}.png`)})` }"
+    @click="switchTool"
   />
 </template>
 
@@ -13,6 +14,12 @@ const props = defineProps({
   toolImage: String,
 });
 
+const emit = defineEmits(['switchTool']);
+
+const switchTool = () => {
+  emit('switchTool');
+};
+
 const { toolImage } = toRefs(props);
 </script>
 
@@ -22,6 +29,5 @@ const { toolImage } = toRefs(props);
   height: 45px;
   border: 1px solid black;
   flex-shrink: 0;
-  margin: 15px 0;
 }
 </style>

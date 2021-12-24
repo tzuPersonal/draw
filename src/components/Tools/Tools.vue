@@ -1,8 +1,11 @@
 <template>
-  <div class="tools flex column">
+  <div
+    class="tools"
+  >
     <div class="toolContainer flex row justify-between align-start wrap">
       <Tool v-for="(tool, index) in tools" :key="index"
         :toolImage="tool.name"
+        @switchTool="tool.do"
       />
     </div>
   </div>
@@ -10,16 +13,20 @@
 
 <script setup>
 import { ref } from 'vue';
+import { switchColor } from '../../../module/js/draw';
 import Tool from './Tool.vue';
 
 const tools = ref(
   [
-    { name: 'pencil', do: () => { console.log('pencil'); } },
-    { name: 'eraser', do: () => { console.log('eraser'); } },
-    { name: 'eraser', do: () => { console.log('eraser'); } },
-    { name: 'eraser', do: () => { console.log('eraser'); } },
+    { name: 'pencil', do: () => { switchColor('black'); } },
+    { name: 'eraser', do: () => { switchColor('white'); } },
+    // { name: 'eraser', do: () => { console.log('eraser'); } },
+    // { name: 'eraser', do: () => { console.log('eraser'); } },
   ],
 );
+// const switchTool = () => {
+//   console.log('switchTool');
+// };
 </script>
 
 <style lang="scss" scope>
@@ -27,10 +34,22 @@ const tools = ref(
   width: 100px;
   height: 600px;
   margin-left: 30px;
+  overflow: auto;
 
   .toolContainer {
     width: 100%;
-    height: 100%;
+
+    > div {
+      margin: 10px 0;
+
+      &:first-child, &:nth-child(2) {
+        margin-top: 0;
+      }
+
+      &:last-child, &:nth-last-child(2) {
+        margin-bottom: 0;
+      }
+    }
   }
 }
 </style>
