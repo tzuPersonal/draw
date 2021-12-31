@@ -5,7 +5,7 @@
     <div class="tools flex row justify-between align-start wrap">
       <Tool v-for="(tool, index) in tools" :key="index"
         :toolName="tool.name"
-        @switchTool="tool.do"
+        @switchTool="tool.callback"
       />
     </div>
   </div>
@@ -14,22 +14,19 @@
 <script setup>
 import { ref } from 'vue';
 import { switchColor } from '../../../module/js/draw';
-import { toggleToolPanelVisible } from '../ToolPanel/store';
 import Tool from './Tool.vue';
 
 const tools = ref(
   [
     {
       name: 'pencil',
-      do: () => {
-        toggleToolPanelVisible('pencil', true);
+      callback: () => {
         switchColor('black');
       },
     },
     {
       name: 'eraser',
-      do: () => {
-        toggleToolPanelVisible(this.name, true);
+      callback: () => {
         switchColor('white');
       },
     },

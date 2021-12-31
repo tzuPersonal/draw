@@ -4,26 +4,24 @@
   >
     <Button
       class="tool"
+      :class="toolName === selectingToolName ? 'selecting' : ''"
       :style="{ 'background-image': `url(${require(`../../assets/${toolName}.png`)})` }"
       @click="switchTool"
     />
-    <ToolPanel v-if="visibleToolName[toolName]" />
   </div>
 </template>
 
 <script setup>
 import { toRefs } from 'vue';
-import { visibleToolName } from '../ToolPanel/store';
+import { selectingToolName, toggleSelectingTool } from './store';
 import Button from '../Button/Button.vue';
-import ToolPanel from '../ToolPanel/ToolPanel.vue';
 
 const props = defineProps({
   toolName: String,
 });
-
 const emit = defineEmits(['switchTool']);
-
 const switchTool = () => {
+  toggleSelectingTool(props.toolName);
   emit('switchTool');
 };
 
@@ -35,10 +33,17 @@ const { toolName } = toRefs(props);
   position: relative;
 
   .tool {
+    position: relative;
     width: 45px;
     height: 45px;
-    border: 1px solid black;
     flex-shrink: 0;
+
+    &.selecting {
+      transform: scale(0.96);
+      filter: brightness(0.8);
+      pointer-events: none;
+      cursor: auto;
+    }
   }
 }
 </style>
