@@ -1,17 +1,24 @@
 <template>
-  <Button
-    class="tool"
-    :style="{ 'background-image': `url(${require(`../../assets/${toolImage}.png`)})` }"
-    @click="switchTool"
-  />
+  <div
+    class="toolController"
+  >
+    <Button
+      class="tool"
+      :style="{ 'background-image': `url(${require(`../../assets/${toolName}.png`)})` }"
+      @click="switchTool"
+    />
+    <ToolPanel v-if="visibleToolName[toolName]" />
+  </div>
 </template>
 
 <script setup>
 import { toRefs } from 'vue';
+import { visibleToolName } from '../ToolPanel/store';
 import Button from '../Button/Button.vue';
+import ToolPanel from '../ToolPanel/ToolPanel.vue';
 
 const props = defineProps({
-  toolImage: String,
+  toolName: String,
 });
 
 const emit = defineEmits(['switchTool']);
@@ -20,14 +27,18 @@ const switchTool = () => {
   emit('switchTool');
 };
 
-const { toolImage } = toRefs(props);
+const { toolName } = toRefs(props);
 </script>
 
 <style lang="scss" scope>
-.tool {
-  width: 45px;
-  height: 45px;
-  border: 1px solid black;
-  flex-shrink: 0;
+.toolController {
+  position: relative;
+
+  .tool {
+    width: 45px;
+    height: 45px;
+    border: 1px solid black;
+    flex-shrink: 0;
+  }
 }
 </style>

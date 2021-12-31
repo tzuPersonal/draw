@@ -1,10 +1,10 @@
 <template>
   <div
-    class="tools"
+    class="toolContainer"
   >
-    <div class="toolContainer flex row justify-between align-start wrap">
+    <div class="tools flex row justify-between align-start wrap">
       <Tool v-for="(tool, index) in tools" :key="index"
-        :toolImage="tool.name"
+        :toolName="tool.name"
         @switchTool="tool.do"
       />
     </div>
@@ -14,12 +14,25 @@
 <script setup>
 import { ref } from 'vue';
 import { switchColor } from '../../../module/js/draw';
+import { toggleToolPanelVisible } from '../ToolPanel/store';
 import Tool from './Tool.vue';
 
 const tools = ref(
   [
-    { name: 'pencil', do: () => { switchColor('black'); } },
-    { name: 'eraser', do: () => { switchColor('white'); } },
+    {
+      name: 'pencil',
+      do: () => {
+        toggleToolPanelVisible('pencil', true);
+        switchColor('black');
+      },
+    },
+    {
+      name: 'eraser',
+      do: () => {
+        toggleToolPanelVisible(this.name, true);
+        switchColor('white');
+      },
+    },
     // { name: 'eraser', do: () => { console.log('eraser'); } },
     // { name: 'eraser', do: () => { console.log('eraser'); } },
   ],
@@ -30,13 +43,12 @@ const tools = ref(
 </script>
 
 <style lang="scss" scope>
-.tools {
+.toolContainer {
   width: 100px;
   height: 600px;
   margin-left: 30px;
-  overflow: auto;
 
-  .toolContainer {
+  .tools {
     width: 100%;
 
     > div {
