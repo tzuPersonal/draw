@@ -2,22 +2,21 @@
   <div
     class="toolPanel"
   >
+    <ScrollBar />
 
   </div>
 </template>
 
 <script setup>
+import ScrollBar from '../ScrollBar/ScrollBar.vue';
 
 </script>
 
 <style lang="scss" scope>
 .toolPanel {
-  position: absolute;
-  width: 200px;
-  height: 600px;
-  left: -200px;
-  top: 0;
-  background-color: rgb(15, 48, 139);
+  position: relative;
+  width: 100%;
   border-radius: 10px;
+  margin: 10px 0;
 }
 </style>

@@ -8,6 +8,7 @@
         @switchTool="tool.callback"
       />
     </div>
+    <ToolPanel />
   </div>
 </template>
 
@@ -15,6 +16,7 @@
 import { ref } from 'vue';
 import { switchColor } from '../../../module/js/draw';
 import Tool from './Tool.vue';
+import ToolPanel from '../ToolPanel/ToolPanel.vue';
 
 const tools = ref(
   [
