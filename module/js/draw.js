@@ -3,16 +3,25 @@ let canvas;
 let isDrawing = false;
 let x = 0;
 let y = 0;
-let color = 'black';
+let settingColor = 'black';
+let settingSize = 10;
+let settingOpacity = 1;
 
-export const switchColor = (settingColor) => {
-  color = settingColor;
+// set
+export const setBrushSize = (size) => {
+  settingSize = size;
+};
+export const setOpacity = (opacity) => {
+  settingOpacity = opacity;
+};
+export const setColor = (color) => {
+  settingColor = color;
 };
 
+// getCanvas
 export default function getCanvas(target) {
   canvas = target;
 }
-
 const waitGetCanvas = () => new Promise((resolve) => {
   window.setTimeout(() => {
     if (!canvas) {
@@ -23,17 +32,18 @@ const waitGetCanvas = () => new Promise((resolve) => {
   });
 });
 
+// draw
 const drawLine = (context, x1, y1, x2, y2) => {
   context.beginPath();
-  context.strokeStyle = color;
-  console.log(color);
-  context.lineWidth = 1;
+  context.strokeStyle = settingColor;
+  context.lineWidth = settingSize;
+  context.globalAlpha = settingColor === 'white' ? 1 : settingOpacity;
+  context.lineCap = 'round';
   context.moveTo(x1, y1);
   context.lineTo(x2, y2);
   context.stroke();
   context.closePath();
 };
-
 const draw = async () => {
   await waitGetCanvas();
   const ctx = canvas.getContext('2d');
