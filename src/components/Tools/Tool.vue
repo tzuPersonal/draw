@@ -4,8 +4,7 @@
   >
     <Button
       class="tool"
-      :class="toolName === selectingToolName ? 'selecting' : ''"
-      :style="{ 'background-image': `url(${require(`../../assets/${toolName}.png`)})` }"
+      :class="[toolName === selectingToolName ? 'selecting' : '', toolName]"
       @click="switchTool"
     />
   </div>
@@ -37,6 +36,14 @@ const { toolName } = toRefs(props);
     width: 45px;
     height: 45px;
     flex-shrink: 0;
+
+    &.pencil {
+      background-image: url('../../assets/pencil.png');
+    }
+
+    &.eraser {
+      background-image: url('../../assets/eraser.png');
+    }
 
     &.selecting {
       transform: scale(0.96);
