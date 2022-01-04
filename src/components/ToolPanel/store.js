@@ -1,4 +1,4 @@
-import { ref, reactive, watch } from 'vue';
+import { ref, reactive } from 'vue';
 import ToolPanelName from './ToolPanelName';
 
 const toolPanelName = ref('');
@@ -9,9 +9,6 @@ export const visibleToolName = reactive(
     [ToolPanelName.eraser]: false,
   },
 );
-watch(visibleToolName, () => {
-  console.log(visibleToolName);
-});
 
 export const toggleToolPanelVisible = (name, force) => {
   const visible = typeof force === 'boolean' ? force : !visibleToolName[name];

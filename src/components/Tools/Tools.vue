@@ -43,9 +43,12 @@ const tools = ref(
 
 <style lang="scss" scope>
 .toolContainer {
-  width: 100px;
+  width: 120px;
   height: 600px;
   margin-left: 30px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #152b8a;
 
   .tools {
     width: 100%;
