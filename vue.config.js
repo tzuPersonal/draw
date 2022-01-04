@@ -1,4 +1,6 @@
 module.exports = {
+  pubilcPath: './docs',
+  outputDir: 'docs',
   css: {
     extract: false,
   },
