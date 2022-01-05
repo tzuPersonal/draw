@@ -1,12 +1,13 @@
+/* eslint-disable import/no-mutable-exports */
 /* eslint-disable no-param-reassign */
 let canvas;
 let isDrawing = false;
 let x = 0;
 let y = 0;
-let settingColor = 'black';
 let settingSize = 10;
 let settingOpacity = 1;
 
+export let settingColor = '#000000';
 // set
 export const setBrushSize = (size) => {
   settingSize = size;

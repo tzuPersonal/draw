@@ -15,6 +15,7 @@
 <script setup>
 import { ref } from 'vue';
 import { setColor } from '../../../module/js/draw';
+import { color } from '../ToolPanel/store';
 import Tool from './Tool.vue';
 import ToolPanel from '../ToolPanel/ToolPanel.vue';
 
@@ -23,7 +24,7 @@ const tools = ref(
     {
       name: 'pencil',
       callback: () => {
-        setColor('black');
+        setColor(color.value);
       },
     },
     {

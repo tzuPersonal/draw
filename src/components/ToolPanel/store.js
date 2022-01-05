@@ -1,4 +1,5 @@
-import { ref, reactive } from 'vue';
+import { ref, reactive, watch } from 'vue';
+import { setColor, settingColor } from '../../../module/js/draw';
 import ToolPanelName from './ToolPanelName';
 
 const toolPanelName = ref('');
@@ -20,3 +21,9 @@ export const toggleToolPanelVisible = (name, force) => {
   visibleToolName[name] = visible;
   toolPanelName.value = visible ? name : '';
 };
+
+export const color = ref(settingColor);
+
+watch(color, () => {
+  setColor(color.value);
+});
