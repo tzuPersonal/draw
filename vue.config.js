@@ -1,5 +1,7 @@
 module.exports = {
-  pubilcPath: './docs',
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/draw/'
+    : '/',
   outputDir: 'docs',
   css: {
     extract: false,
